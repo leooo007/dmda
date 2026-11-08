@@ -1,0 +1,55 @@
+# Sample Data
+marks <- c(45, 50, 60, 70, 80, 80, 90)
+
+# Mean
+mean_value <- mean(marks)
+
+# Median
+median_value <- median(marks)
+
+# Mode (User-defined Function)
+getmode <- function(v) {
+    uniqv <- unique(v)
+    uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+
+mode_value <- getmode(marks)
+
+# Display Results
+cat("Sample Data:", marks, "\n")
+cat("Mean:", mean_value, "\n")
+cat("Median:", median_value, "\n")
+cat("Mode:", mode_value, "\n")
+----------------------------------------------------------
+# Sample Data
+Hours <- c(1, 2, 3, 4, 5, 6)
+Marks <- c(35, 40, 50, 55, 65, 75)
+
+# Display Data
+print(Hours)
+print(Marks)
+
+# Correlation
+correlation <- cor(Hours, Marks)
+cat("Correlation =", correlation, "\n")
+
+# Covariance
+covariance <- cov(Hours, Marks)
+cat("Covariance =", covariance, "\n")
+
+# Linear Regression Model
+model <- lm(Marks ~ Hours)
+
+# Display Regression Equation
+print(summary(model))
+
+# Scatter Plot
+plot(Hours, Marks,
+     main = "Regression Analysis",
+     xlab = "Study Hours",
+     ylab = "Marks",
+     pch = 19,
+     col = "blue")
+
+# Regression Line
+abline(model, col = "red", lwd = 2)
