@@ -1,0 +1,36 @@
+students <- data.frame(
+  StudyHours = c(1,2,3,4,5,6,7,8),
+Pass = c(0,0,0,1,1,1,1,1))
+model <- glm(
+  Pass ~ StudyHours,
+  data = students,
+  family = binomial
+)
+summary(model)
+students$Probability <- predict(
+  model,
+  type = "response"
+)
+students$Prediction <- ifelse(
+  students$Probability >= 0.5,
+  1,
+  0
+)
+students
+plot(
+  students$StudyHours,
+  students$Pass,
+  pch = 19,
+  xlab = "Study Hours",
+  ylab = "Probability of Passing",
+  main = "Logistic Regression"
+)
+lines(students$StudyHours, students$Probability, lwd = 2)
+new_student <- data.frame(StudyHours = 5)
+prob <- predict(
+  model,
+  newdata = new_student,
+  type = "response"
+)
+print(prob)
+ifelse(prob >= 0.5, "Pass", "Fail")
