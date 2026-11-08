@@ -1,0 +1,37 @@
+# Linear Regression Example
+
+# Step 1: Create Sample Data
+Hours <- c(1,2,3,4,5,6)
+Marks <- c(35,40,50,55,65,75)
+
+# Step 2: Create Data Frame
+student <- data.frame(Hours, Marks)
+
+# Display Data
+print(student)
+
+# Step 3: Build Linear Regression Model
+model <- lm(Marks ~ Hours, data = student)
+
+# Step 4: Display Summary
+summary(model)
+
+# Step 5: Display Regression Coefficients
+coef(model)
+
+# Step 6: Display Predicted Values
+predict(model)
+
+# Step 7: Draw Scatter Plot
+plot(Hours,
+     Marks,
+     main="Linear Regression",
+     xlab="Study Hours",
+     ylab="Marks",
+     pch=18,
+     col="blue")
+
+# Step 8: Draw Regression Line
+abline(model,
+       col="red",
+       lwd=2)
