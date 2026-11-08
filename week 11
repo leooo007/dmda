@@ -1,0 +1,237 @@
+# 1. DNORM - Normal Density Function
+
+# Generate X values
+x <- seq(20, 80, by = 1)
+
+# Density values
+y <- dnorm(x, mean = 50, sd = 10)
+
+# Create chart file
+png(file = "dnorm.png")
+
+# Plot
+plot(x, y,
+     type = "p",
+     pch = 19,
+     col = "blue",
+     main = "Normal Density (dnorm)",
+     xlab = "Marks",
+     ylab = "Density")
+
+# Regression line
+model <- lm(y ~ x)
+abline(model, col = "red", lwd = 2)
+
+# Model summary
+summary(model)
+
+dev.off()
+
+
+# 2. PNORM - Cumulative Normal Distribution
+
+# Generate X values
+x <- seq(20, 80, by = 1)
+
+# Cumulative probability values
+y <- pnorm(x, mean = 50, sd = 10)
+
+# Create chart file
+png(file = "pnorm.png")
+
+# Plot
+plot(x, y,
+     pch = 19,
+     col = "blue",
+     main = "Cumulative Probability (pnorm)",
+     xlab = "Marks",
+     ylab = "Probability")
+
+# Regression line
+model <- lm(y ~ x)
+abline(model, col = "red", lwd = 2)
+
+# Model summary
+summary(model)
+
+dev.off()
+
+
+# 3. QNORM - Normal Quantile Function
+
+# Generate probability values
+p <- seq(0.01, 0.99, by = 0.05)
+
+# Quantile values
+x <- qnorm(p, mean = 50, sd = 10)
+
+# Create chart file
+png(file = "qnorm.png")
+
+# Plot
+plot(p, x,
+     pch = 19,
+     col = "blue",
+     main = "Quantile Function (qnorm)",
+     xlab = "Probability",
+     ylab = "Marks")
+
+# Regression line
+model <- lm(x ~ p)
+abline(model, col = "red", lwd = 2)
+
+# Model summary
+summary(model)
+
+dev.off()
+
+
+# 4. RNORM - Random Normal Distribution
+
+# Set random seed
+set.seed(100)
+
+# Generate random normal values
+y <- rnorm(50, mean = 50, sd = 10)
+
+# Generate X values
+x <- 1:50
+
+# Create chart file
+png(file = "rnorm.png")
+
+# Plot
+plot(x, y,
+     pch = 19,
+     col = "blue",
+     main = "Random Normal Data (rnorm)",
+     xlab = "Observation",
+     ylab = "Marks")
+
+# Regression line
+model <- lm(y ~ x)
+abline(model, col = "red", lwd = 2)
+
+# Model summary
+summary(model)
+
+dev.off()
+
+
+# 5. DBINOM - Binomial Probability Distribution
+
+# Generate X values
+x <- 0:10
+
+# Probability values
+y <- dbinom(x, size = 10, prob = 0.6)
+
+# Create chart file
+png(file = "dbinom.png")
+
+# Plot
+plot(x, y,
+     pch = 19,
+     col = "blue",
+     main = "Binomial Probability (dbinom)",
+     xlab = "Successes",
+     ylab = "Probability")
+
+# Regression line
+model <- lm(y ~ x)
+abline(model, col = "red", lwd = 2)
+
+# Model summary
+summary(model)
+
+dev.off()
+
+
+# 6. PBINOM - Cumulative Binomial Distribution
+
+# Generate X values
+x <- 0:10
+
+# Cumulative probability values
+y <- pbinom(x, size = 10, prob = 0.6)
+
+# Create chart file
+png(file = "pbinom.png")
+
+# Plot
+plot(x, y,
+     pch = 19,
+     col = "blue",
+     main = "Cumulative Binomial (pbinom)",
+     xlab = "Successes",
+     ylab = "Probability")
+
+# Regression line
+model <- lm(y ~ x)
+abline(model, col = "red", lwd = 2)
+
+# Model summary
+summary(model)
+
+dev.off()
+
+
+# 7. QBINOM - Binomial Quantile Function
+
+# Generate probability values
+p <- seq(0.1, 0.9, by = 0.1)
+
+# Quantile values
+x <- qbinom(p, size = 10, prob = 0.6)
+
+# Create chart file
+png(file = "qbinom.png")
+
+# Plot
+plot(p, x,
+     pch = 19,
+     col = "blue",
+     main = "Binomial Quantile (qbinom)",
+     xlab = "Probability",
+     ylab = "Successes")
+
+# Regression line
+model <- lm(x ~ p)
+abline(model, col = "red", lwd = 2)
+
+# Model summary
+summary(model)
+
+dev.off()
+
+
+# 8. RBINOM - Random Binomial Distribution
+
+# Set random seed
+set.seed(100)
+
+# Generate random binomial values
+x <- rbinom(50, size = 10, prob = 0.6)
+
+# Generate observation values
+p <- 1:50
+
+# Create chart file
+png(file = "rbinom.png")
+
+# Plot
+plot(p, x,
+     pch = 19,
+     col = "blue",
+     main = "Random Binomial Data (rbinom)",
+     xlab = "Observation",
+     ylab = "Successes")
+
+# Regression line
+model <- lm(x ~ p)
+abline(model, col = "red", lwd = 2)
+
+# Model summary
+summary(model)
+
+dev.off()
