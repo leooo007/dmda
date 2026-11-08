@@ -1,0 +1,53 @@
+# Sample data
+year <- 1:8
+
+population <- c(
+  110, 125, 145, 165,
+  190, 220, 250, 290
+)
+
+# Create data frame
+data <- data.frame(year, population)
+
+# Non-linear least squares model
+model <- nls(
+  population ~ a * exp(b * year),
+  data = data,
+  start = list(a = 100, b = 0.1)
+)
+
+# Display model summary
+summary(model)
+
+# Predicted values
+predicted <- predict(model)
+print(predicted)
+
+# Plot original data
+plot(
+  year,
+  population,
+  main = "Non-Linear Least Squares Regression",
+  xlab = "Year",
+  ylab = "Population",
+  pch = 19
+)
+
+# Add fitted regression curve
+lines(
+  year,
+  predicted,
+  col = "red",
+  lwd = 2
+)
+
+# Predict population for a new year
+new_data <- data.frame(year = 10)
+
+new_prediction <- predict(
+  model,
+  newdata = new_data
+)
+
+# Display prediction for year 10
+print(new_prediction)
