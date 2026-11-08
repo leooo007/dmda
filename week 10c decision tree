@@ -1,0 +1,39 @@
+# Decision Tree Using R
+
+# Load packages
+library(rpart)
+library(rpart.plot)
+
+# Create dataset
+data <- data.frame(
+  StudyHours = c(1, 2, 3, 4, 5, 6, 7, 8),
+  Result = c(
+    "Fail", "Fail", "Fail", "Fail",
+    "Pass", "Pass", "Pass", "Pass"
+  )
+)
+
+# Convert Result to factor
+data$Result <- as.factor(data$Result)
+
+# Display dataset
+print(data)
+
+# Build Decision Tree
+model <- rpart(
+  Result ~ StudyHours,
+  data = data,
+  method = "class"
+)
+
+# Display model
+print(model)
+
+# Draw Decision Tree
+rpart.plot(
+  model,
+  type = 3,
+  extra = 104,
+  fallen.leaves = TRUE,
+  main = "Decision Tree - Student Result"
+)
