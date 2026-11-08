@@ -1,0 +1,39 @@
+# Poisson Regression
+
+# Step 1: Create data
+hours <- c(1, 2, 3, 4, 5, 6, 7, 8)
+
+questions <- c(2, 3, 4, 6, 8, 10, 13, 16)
+
+# Step 2: Create data frame
+data <- data.frame(hours, questions)
+
+# Step 3: Display data
+print(data)
+
+# Step 4: Fit Poisson regression
+model <- glm(questions ~ hours,
+             family = poisson,
+             data = data)
+
+# Step 5: Display model
+summary(model)
+
+# Step 6: Predict
+predicted <- predict(model,
+                     type = "response")
+
+print(predicted)
+
+# Step 7: Plot actual observations
+plot(data$hours,
+     data$questions,
+     pch = 19,
+     xlab = "Study Hours",
+     ylab = "Questions Answered",
+     main = "Poisson Regression")
+
+# Step 8: Add regression curve
+lines(data$hours,
+      predicted,
+      lwd = 2)
